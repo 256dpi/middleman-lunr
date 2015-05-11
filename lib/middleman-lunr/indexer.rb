@@ -37,7 +37,7 @@ module Middleman::Lunr
 
       cxt = V8::Context.new
       cxt.load(File.expand_path('../../../js/lunr.min.js', __FILE__))
-      cxt.eval('lunr.Index.prototype.indexJson = function(){return JSON.stringify(this);}')
+      cxt.eval('lunr.Index.prototype.dumpIndex = function(){return JSON.stringify(this.toJSON());}')
       ref = cxt.eval('lunr')
 
       lunr_conf = proc do |this|
@@ -53,7 +53,7 @@ module Middleman::Lunr
         idx.add(doc)
       end
 
-      idx.indexJson()
+      idx.dumpIndex()
     end
   end
 end
