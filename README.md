@@ -18,6 +18,6 @@ activate :lunr
 
 Create a JSON template `search.json.erb` and generate the index:
 
-```erb
+```eruby
 <%= generate_search_index %>
 ```
