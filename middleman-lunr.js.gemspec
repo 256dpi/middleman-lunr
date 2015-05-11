@@ -8,7 +8,9 @@ Gem::Specification.new do |s|
   s.authors     = ['Joël Gähwiler']
   s.email       = ['joel.gaehwiler@gmail.com']
   s.homepage    = 'https://github.com/256dpi/middleman-lunr'
-  s.summary     = %q{middleman extension for static indexed search using lunr.js}
+  s.summary     = 'middleman extension for static indexed search using lunr.js'
+  s.description = 'Create a queryable index of your static site content to use with lunr.js.'
+  s.license     = 'MIT'
 
   s.files         = `git ls-files`.split("\n")
   s.require_paths = ['lib']

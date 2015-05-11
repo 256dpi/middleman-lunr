@@ -2,6 +2,8 @@
 
 **middleman extension for static indexed search using lunr.js**
 
+Create a queryable index of your static site content to use with lunr.js.
+
 ## Usage
 
 Add gem to your Gemfile:
