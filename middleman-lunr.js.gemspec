@@ -7,9 +7,8 @@ Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.authors     = ['Joël Gähwiler']
   s.email       = ['joel.gaehwiler@gmail.com']
-  # s.homepage    = 'http://example.com'
-  # s.summary     = %q{A short summary of your extension}
-  # s.description = %q{A longer description of your extension}
+  s.homepage    = 'https://github.com/256dpi/middleman-lunr'
+  s.summary     = %q{middleman extension for static indexed search using lunr.js}
 
   s.files         = `git ls-files`.split("\n")
   s.require_paths = ['lib']
