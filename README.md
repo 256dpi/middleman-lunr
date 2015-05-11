@@ -1,6 +1,6 @@
 # middleman-lunr
 
-**middleman extension for static indexed search using lunr.js**
+**middleman extension for a static indexed search using lunr.js**
 
 Create a queryable index of your static site content to use with lunr.js.
 
@@ -31,7 +31,9 @@ function loadIndex(){
   $.getJSON('/search.json', function(data){
     var index = lunr.Index.load(data.index);
     var map = data.map
-    console.log(index.search('Lunr.js'));
+    index.search('Lunr.js').forEach(function(res){
+      console.log(map[res.ref].title);
+    });
   });
 }
 ```
