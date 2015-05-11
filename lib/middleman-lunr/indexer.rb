@@ -10,6 +10,7 @@ module Middleman::Lunr
     def generate(options)
       docs = []
       fields = []
+      map = {}
 
       if options[:body]
         fields.push(:body)
@@ -22,6 +23,8 @@ module Middleman::Lunr
       @extension.sitemap.resources.each do |res|
         if res.data[:index]
           doc = { id: res.url.to_s }
+          key = res.url.to_s
+          data = {}
 
           if options[:body]
             doc[:body] = File.read(res.source_file)
@@ -29,9 +32,11 @@ module Middleman::Lunr
 
           options[:data].each do |d|
             doc[d] = res.data[d]
+            data[d.to_s] = res.data[d]
           end
 
           docs << doc
+          map[key] = data
         end
       end
 
@@ -53,7 +58,9 @@ module Middleman::Lunr
         idx.add(doc)
       end
 
-      idx.dumpIndex()
+      data = JSON.parse(idx.dumpIndex())
+
+      { index: data, map: map }
     end
   end
 end

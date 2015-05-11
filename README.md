@@ -21,7 +21,7 @@ activate :lunr
 Create a JSON template `search.json.erb` and generate the index:
 
 ```html
-<%= generate_search_index %>
+<%= JSON.generate(generate_search_index) %>
 ```
 
 Load and query the index:
@@ -29,7 +29,8 @@ Load and query the index:
 ```js
 function loadIndex(){
   $.getJSON('/search.json', function(data){
-    var index = lunr.Index.load(data);
+    var index = lunr.Index.load(data.index);
+    var map = data.map
     console.log(index.search('Lunr.js'));
   });
 }
