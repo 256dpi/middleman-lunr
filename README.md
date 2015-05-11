@@ -31,4 +31,4 @@ function loadIndex(){
     console.log(index.search('Lunr.js'));
   });
 }
-``
+```
