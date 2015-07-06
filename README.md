@@ -20,6 +20,12 @@ Activate the extension in `config.rb`:
 activate :lunr
 ```
 
+Mark the files you wanna index in the [frontmatter](https://middlemanapp.com/basics/frontmatter/):
+
+```
+index: true
+```
+
 Create a JSON template `source/search.json.erb` and generate the index and map:
 
 ```html
@@ -27,6 +33,12 @@ Create a JSON template `source/search.json.erb` and generate the index and map:
 ```
 - The generated json will include the lunr.js index under the `index` key and a map that translates lunr.js references to your middleman pages under the `map` key.
 - The `data` argument is an array of [frontmatter](https://middlemanapp.com/basics/frontmatter/) variables that you'd like to include in the map.
+
+Reference the lunr.js library in your `layouts/layout.html.erb`:
+
+```html
+<script src="//cdnjs.cloudflare.com/ajax/libs/lunr.js/0.5.9/lunr.min.js" type="text/javascript"></script>
+```
 
 Load and query the index:
 
