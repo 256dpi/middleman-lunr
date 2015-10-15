@@ -20,16 +20,18 @@ Activate the extension in `config.rb`:
 activate :lunr
 ```
 
-Mark the files you wanna index in the [frontmatter](https://middlemanapp.com/basics/frontmatter/):
+All published posts will be indexed by default. Unpublished posts are ignored
+by default. To ignore published posts you don't want to index, add the
+following to their [frontmatter](https://middlemanapp.com/basics/frontmatter/):
 
 ```
-index: true
+index: false
 ```
 
 Create a JSON template `source/search.json.erb` and generate the index and map:
 
 ```html
-<%= JSON.generate(generate_search_index({data: [:title, :description]})) %>
+<%= JSON.generate(generate_search_index({data: [:title, :description]}), max_nesting: false) %>
 ```
 - The generated json will include the lunr.js index under the `index` key and a map that translates lunr.js references to your middleman pages under the `map` key.
 - The `data` argument is an array of [frontmatter](https://middlemanapp.com/basics/frontmatter/) variables that you'd like to include in the map.
