@@ -28,7 +28,7 @@ index: true
 
 Create a JSON template `source/search.json.erb` and generate the index and map:
 
-```html
+```erb
 <%= JSON.generate(generate_search_index({data: [:title, :description]}), max_nesting: false) %>
 ```
 - The generated json will include the lunr.js index under the `index` key and a map that translates lunr.js references to your middleman pages under the `map` key.
