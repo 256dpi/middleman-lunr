@@ -20,10 +20,12 @@ Activate the extension in `config.rb`:
 activate :lunr
 ```
 
-Mark the files you wanna index in the [frontmatter](https://middlemanapp.com/basics/frontmatter/):
+All published posts will be indexed by default. Unpublished posts are ignored
+by default. To ignore published posts you don't want to index, add the
+following to their [frontmatter](https://middlemanapp.com/basics/frontmatter/):
 
 ```
-index: true
+index: false
 ```
 
 Create a JSON template `source/search.json.erb` and generate the index and map:

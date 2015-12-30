@@ -21,23 +21,23 @@ module Middleman::Lunr
       end
 
       @extension.sitemap.resources.each do |res|
-        if res.data[:index]
-          doc = { id: res.url.to_s }
-          key = res.url.to_s
-          data = {}
+        next if not_indexable?(res)
 
-          if options[:body]
-            doc[:body] = File.read(res.source_file)
-          end
+        doc = { id: res.url.to_s }
+        key = res.url.to_s
+        data = {}
 
-          options[:data].each do |d|
-            doc[d] = res.data[d]
-            data[d.to_s] = res.data[d]
-          end
-
-          docs << doc
-          map[key] = data
+        if options[:body]
+          doc[:body] = File.read(res.source_file)
         end
+
+        options[:data].each do |d|
+          doc[d] = res.data[d]
+          data[d.to_s] = res.data[d]
+        end
+
+        docs << doc
+        map[key] = data
       end
 
       cxt = V8::Context.new
@@ -61,6 +61,12 @@ module Middleman::Lunr
       data = JSON.parse(idx.dumpIndex(), max_nesting: false)
 
       { index: data, map: map }
+    end
+
+    private
+
+    def not_indexable?(res)
+      res.data[:title].nil? || res.data[:index] == false || res.data[:published] == false
     end
   end
 end
