@@ -58,7 +58,7 @@ module Middleman::Lunr
         idx.add(doc)
       end
 
-      data = JSON.parse(idx.dumpIndex())
+      data = JSON.parse(idx.dumpIndex(), max_nesting: false)
 
       { index: data, map: map }
     end

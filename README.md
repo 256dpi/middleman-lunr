@@ -29,7 +29,7 @@ index: true
 Create a JSON template `source/search.json.erb` and generate the index and map:
 
 ```html
-<%= JSON.generate(generate_search_index({data: [:title, :description]})) %>
+<%= JSON.generate(generate_search_index({data: [:title, :description]}), max_nesting: false) %>
 ```
 - The generated json will include the lunr.js index under the `index` key and a map that translates lunr.js references to your middleman pages under the `map` key.
 - The `data` argument is an array of [frontmatter](https://middlemanapp.com/basics/frontmatter/) variables that you'd like to include in the map.
