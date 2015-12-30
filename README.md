@@ -22,7 +22,7 @@ activate :lunr
 
 Mark the files you wanna index in the [frontmatter](https://middlemanapp.com/basics/frontmatter/):
 
-```
+```yml
 index: true
 ```
 
