@@ -13,4 +13,5 @@ class Lunr < ::Middleman::Extension
   end
 end
 
-Lunr.register(:lunr)
+::Middleman::Extensions.register(:lunr, Lunr)
+
