@@ -3,7 +3,7 @@ $:.push File.expand_path('../lib', __FILE__)
 
 Gem::Specification.new do |s|
   s.name        = 'middleman-lunr'
-  s.version     = '0.2.2'
+  s.version     = '0.3.0'
   s.platform    = Gem::Platform::RUBY
   s.authors     = ['Joël Gähwiler']
   s.email       = ['joel.gaehwiler@gmail.com']
